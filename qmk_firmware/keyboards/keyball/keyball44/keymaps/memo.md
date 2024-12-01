@@ -1,4 +1,5 @@
 https://docs.qmk.fm/features/pointing_device#pointing-device-auto-mouse
+
 How to enable:
 c
 // in config.h:
