@@ -43,6 +43,48 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 /////end/////
 
+/////layer0+lang2/////
+enum my_keyball_keycodes {
+    LAYER0_LANG2= SAFE_RANGE, // レイヤー変更 + 半角キー
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LAYER0_LANG2:
+            if (record->event.pressed) {
+                // レイヤー0に移動
+                layer_on(0);
+
+                // 半角/全角キーを送信
+                tap_code(KC_LANG2);
+            }
+            return false; // 他の処理をブロック
+    }
+    return true; // 他のキーコードを処理
+}
+/////end/////
+
+/////layer1+lang1/////
+enum my_keyball_keycodes {
+    LAYER1_LANG1 = SAFE_RANGE, // レイヤー変更 + 半角キー
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LAYER1_LANG1:
+            if (record->event.pressed) {
+                // レイヤー1に移動
+                layer_on(1);
+
+                // 半角/全角キーを送信
+                tap_code(KC_LANG1);
+            }
+            return false; // 他の処理をブロック
+    }
+    return true; // 他のキーコードを処理
+}
+/////end/////
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
@@ -76,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [4] = LAYOUT_universal(
     PRC_TOG  , PRC_SW  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
-    _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
+    LAYER0_LANG2  , LAYER1_LANG1  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
                   _______  , _______  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , _______  , _______
   ),
@@ -89,6 +131,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [6] = LAYOUT_universal(
+    _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
+                  _______  , _______  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , _______  , _______
+  ),
+
+  [7] = LAYOUT_universal(
     _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  ,KC_MY_BTN1, _______  ,KC_MY_BTN2, _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
