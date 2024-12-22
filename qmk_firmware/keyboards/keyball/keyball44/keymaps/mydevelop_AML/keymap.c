@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "quantum.h"
 
 //////precision/////
+#include "precision.c"
 enum my_keyball_keycodes {
     PRC_TOG,                      // Precision モードトグル
     PRC_SW,                       // Precision モードスイッチ  
