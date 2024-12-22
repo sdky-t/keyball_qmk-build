@@ -23,14 +23,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //////precision/////
 #include "precision.c"
 enum my_keyball_keycodes {
-    PRC_TOG,                      // Precision モードトグル
-    PRC_SW,                       // Precision モードスイッチ  
+    PRC_TOG= SAFE_RANGE,      // Precision モードトグル
+    PRC_SW= SAFE_RANGE,       // Precision モードスイッチ  
+    LAYER0_LANG2= SAFE_RANGE, // レイヤー変更 + 半角キー
+    LAYER1_LANG1 = SAFE_RANGE, // レイヤー変更 + 半角キー
 };
 
 // キーマップの任意の場所に「PRC_TOG」、「PRC_SW」を追加 
 // 例：
 //  [3] = LAYOUT_universal(
 //    LAY_TOG  , PRC_TOG, PRC_SW
+/////layer0+lang2/////
+/////LAYER0_LANG2/////
+/////layer1+lang1/////
+/////LAYER1_LANG1/////
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -38,19 +44,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case PRC_SW:  precision_switch(record->event.pressed); return false;
         case PRC_TOG: precision_toggle(record->event.pressed); return false;
         #endif
-        default: break;
-    }
-    return true;
-}
-/////end/////
-
-/////layer0+lang2/////
-enum my_keyball_keycodes {
-    LAYER0_LANG2= SAFE_RANGE, // レイヤー変更 + 半角キー
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
         case LAYER0_LANG2:
             if (record->event.pressed) {
                 // レイヤー0に移動
@@ -60,19 +53,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_LNG2);
             }
             return false; // 他の処理をブロック
-    }
-    return true; // 他のキーコードを処理
-}
-/////end/////
-
-/////layer1+lang1/////
-enum my_keyball_keycodes {
-    LAYER1_LANG1 = SAFE_RANGE, // レイヤー変更 + 半角キー
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LAYER1_LANG1:
+         case LAYER1_LANG1:
             if (record->event.pressed) {
                 // レイヤー1に移動
                 layer_on(1);
@@ -81,10 +62,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_LNG1);
             }
             return false; // 他の処理をブロック
+        default: break;
     }
-    return true; // 他のキーコードを処理
+    return true;
 }
 /////end/////
+
+
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -140,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [7] = LAYOUT_universal(
     _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
-    _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , MS_BTN1  , _______  , MS_BTN2  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , KC_BTN1  , _______  , KC_BTN2  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,                                        _______  , _______  , _______  , _______  , _______  , _______  ,
                   _______  , _______  , _______  ,        _______  , _______  ,                   _______  , _______  , _______       , _______  , _______
   )
