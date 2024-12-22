@@ -24,9 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "precision.c"
 enum my_keyball_keycodes {
     PRC_TOG= SAFE_RANGE,      // Precision モードトグル
-    PRC_SW= SAFE_RANGE,       // Precision モードスイッチ  
-    LAYER0_LANG2= SAFE_RANGE, // レイヤー変更 + 半角キー
-    LAYER1_LANG1 = SAFE_RANGE, // レイヤー変更 + 半角キー
+    PRC_SW,       // Precision モードスイッチ  
+    LAYER0_LANG2, // レイヤー変更 + 半角キー
+    LAYER1_LANG1, // レイヤー変更 + 半角キー
 };
 
 // キーマップの任意の場所に「PRC_TOG」、「PRC_SW」を追加 
