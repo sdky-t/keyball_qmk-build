@@ -46,8 +46,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         #endif
         case LAYER0_LANG2:
             if (record->event.pressed) {
-                // ベースレイヤーを0に変更
-                layer_move(0);
+                // レイヤーを0に変更
+                layer_on(0);
+                // レイヤー1はオフ
+                layer_off(1);      
 
                 // 半角/全角キーを送信
                 tap_code(KC_LNG2);
@@ -55,8 +57,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false; // 他の処理をブロック
          case LAYER1_LANG1:
             if (record->event.pressed) {
-                // ベースレイヤーを1に変更
-                layer_move(1);
+                // レイヤーを1に変更
+                layer_on(1);
+                // レイヤー0はオフ
+                layer_off(0);  
 
                 // 半角/全角キーを送信
                 tap_code(KC_LNG1);
