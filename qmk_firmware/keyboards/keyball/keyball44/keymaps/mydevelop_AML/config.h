@@ -37,8 +37,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_DEFAULT_LAYER 7
+#define AUTO_MOUSE_THRESHOLD 20
 
 #define PRECISION_ENABLE // precision有効化
-#define PRECISION_CPI 4  // 下げた時のCPI (1/100の値を指定。4ならCPI 400)
+#define PRECISION_CPI 3  // 下げた時のCPI (1/100の値を指定。4ならCPI 400)
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8 //レイヤ0~7を使用
