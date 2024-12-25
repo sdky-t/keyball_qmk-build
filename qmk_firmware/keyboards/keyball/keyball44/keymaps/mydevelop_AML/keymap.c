@@ -144,7 +144,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     // もし最上位が レイヤー7 じゃない場合は、レイヤー7 のビットをオフにする
     if (highest_layer != 7) {
         // AUTO_MOUSE(7)に該当するビットだけ 0 にするビットマスクを作成しAND
-        state &= ~((layer_state_t)1 << 7);
+        layer_off(7);  
     }
     
     return state;
