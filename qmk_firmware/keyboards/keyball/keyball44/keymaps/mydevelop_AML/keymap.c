@@ -140,12 +140,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     keyball_set_scroll_mode(get_highest_layer(state) == 5);
     
     // 現在有効化されたレイヤーの中で、最も優先度が高いレイヤー番号を取得
-    uint8_t highest_layer = get_highest_layer(state);
+    //uint8_t highest_layer = get_highest_layer(state);
     // もし最上位が レイヤー2 じゃない場合は、レイヤー2 のビットをオフにする
-    if (highest_layer != 2) {
+    //if (highest_layer != 2) {
         // AUTO_MOUSE(2)に該当するビットだけ 0 にするビットマスクを作成しAND
-        state &= ~((layer_state_t)1 << 2);
-    }
+        //state &= ~((layer_state_t)1 << 2);
+    //}
     
     return state;
 }
